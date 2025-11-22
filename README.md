@@ -3,6 +3,8 @@
 ### 使い方    
 [📘 How to use](https://zenn.dev/zenn/articles/zenn-cli-guide) に記載してあります。
 
+---
+
 ### published: falseのファイルを.gitignoreに追加
 
 `published: false`になっている記事ファイルを自動的に`.gitignore`に追加し、`published: true`になったファイルを`.gitignore`から削除するスクリプトが用意しました。
