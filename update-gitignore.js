@@ -4,57 +4,74 @@ const path = require('path');
 const articlesDir = path.join(__dirname, 'articles');
 const gitignorePath = path.join(__dirname, '.gitignore');
 
-// 記事ファイルを読み込んで、published: falseのものを検出
-function findUnpublishedArticles() {
+// 記事ファイルを読み込んで、publishedの状態をチェック
+function checkArticleStatus() {
   const files = fs.readdirSync(articlesDir);
   const unpublishedFiles = [];
+  const publishedFiles = [];
 
   files.forEach(file => {
     if (file.endsWith('.md')) {
       const filePath = path.join(articlesDir, file);
       const content = fs.readFileSync(filePath, 'utf-8');
+      const gitignorePath = `articles/${file}`;
       
-      // フロントマターからpublished: falseを検出
+      // フロントマターからpublishedの状態を検出
       if (content.match(/^published:\s*false/m)) {
-        unpublishedFiles.push(`articles/${file}`);
+        unpublishedFiles.push(gitignorePath);
+      } else if (content.match(/^published:\s*true/m)) {
+        publishedFiles.push(gitignorePath);
       }
     }
   });
 
-  return unpublishedFiles;
+  return { unpublishedFiles, publishedFiles };
 }
 
 // .gitignoreを更新
 function updateGitignore() {
-  let gitignoreContent = fs.readFileSync(gitignorePath, 'utf-8');
-  const unpublishedFiles = findUnpublishedArticles();
+  const gitignoreContent = fs.readFileSync(gitignorePath, 'utf-8');
+  const { unpublishedFiles, publishedFiles } = checkArticleStatus();
 
-  if (unpublishedFiles.length === 0) {
-    console.log('published: falseのファイルは見つかりませんでした。');
-    return;
-  }
-
-  // 既存のエントリを確認
+  // .gitignoreの行を分割
   const lines = gitignoreContent.split('\n');
-  const existingEntries = new Set(lines.map(line => line.trim()));
+  const newLines = [];
+  const existingArticleEntries = new Set();
 
-  // 新しいエントリを追加
-  let added = false;
-  unpublishedFiles.forEach(file => {
-    if (!existingEntries.has(file)) {
-      gitignoreContent += `\n${file}`;
-      added = true;
-      console.log(`追加: ${file}`);
+  // 既存の.gitignoreの内容を保持しつつ、articles/で始まるエントリを記録
+  lines.forEach(line => {
+    const trimmed = line.trim();
+    if (trimmed.startsWith('articles/')) {
+      existingArticleEntries.add(trimmed);
     } else {
-      console.log(`既に存在: ${file}`);
+      // articles/で始まらない行はそのまま保持
+      newLines.push(line);
     }
   });
 
-  if (added) {
-    fs.writeFileSync(gitignorePath, gitignoreContent, 'utf-8');
+  // published: falseのファイルを追加
+  unpublishedFiles.forEach(file => {
+    newLines.push(file);
+    if (!existingArticleEntries.has(file)) {
+      console.log(`追加: ${file}`);
+    }
+  });
+
+  // published: trueのファイルが.gitignoreに含まれている場合は削除
+  publishedFiles.forEach(file => {
+    if (existingArticleEntries.has(file)) {
+      console.log(`削除: ${file}`);
+    }
+  });
+
+  const updatedContent = newLines.join('\n');
+  const hasChanged = updatedContent !== gitignoreContent;
+
+  if (hasChanged) {
+    fs.writeFileSync(gitignorePath, updatedContent, 'utf-8');
     console.log('\n.gitignoreを更新しました。');
   } else {
-    console.log('\n追加する新しいエントリはありませんでした。');
+    console.log('\n変更はありませんでした。');
   }
 }
 

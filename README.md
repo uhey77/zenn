@@ -4,7 +4,7 @@
 
 ## published: falseのファイルを.gitignoreに追加
 
-`published: false`になっている記事ファイルを自動的に`.gitignore`に追加するスクリプトが用意しました。
+`published: false`になっている記事ファイルを自動的に`.gitignore`に追加し、`published: true`になったファイルを`.gitignore`から削除するスクリプトが用意しました。
 
 ```bash
 npm run update-gitignore
@@ -16,4 +16,7 @@ npm run update-gitignore
 node update-gitignore.js
 ```
 
-このスクリプトを実行すると、`articles`ディレクトリ内のMarkdownファイルをチェックし、`published: false`が設定されているファイルを`.gitignore`に自動追加します。既に`.gitignore`に存在するファイルは重複して追加されません。
+このスクリプトを実行すると、`articles`ディレクトリ内のMarkdownファイルをチェックし、以下の処理を行います：
+
+- `published: false`が設定されているファイルを`.gitignore`に自動追加
+- `published: true`が設定されているファイルを`.gitignore`から自動削除
