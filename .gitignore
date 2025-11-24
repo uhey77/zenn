@@ -1,3 +1,4 @@
 node_modules
 .DS_Store
-articles/セグメンテーション比較.md
+articles/esa_summarizer.md
+articles/segmentation.md
