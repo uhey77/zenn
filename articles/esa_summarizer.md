@@ -14,7 +14,7 @@ publication_name: "transmedia_blog"
 突然ですが、日々あふれる情報をどのように管理していますか？
 私の研究室では、教授が毎日 [esa](https://esa.io/)（情報共有サービス）に膨大な量の情報を共有してくれます。非常にありがたいのですが、投稿頻度が高く、全てのドキュメントをじっくり読む時間が取れないのが悩みでした。なので、投稿されたドキュメントの内容を要約してくれるものがあれば、隙間時間でもサッと内容を把握できるのに...と考えていました。
 
-![](/images/esa_summarizer/ex_thinking.png)
+![thinking](/images/esa_summarizer/ex_thinking.png)
 
 そこで、esa への投稿内容をリアルタイムで要約してくれる Slack bot を [後輩](https://zenn.dev/su1s0su1) と一緒に開発しました。本記事では、その実装方法と使い方をご紹介します。
 
