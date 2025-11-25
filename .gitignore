@@ -1,10 +1,5 @@
 node_modules
 .DS_Store
 
-
 # 公開していない記事
 articles/segmentation.md
-
-
-# 画像ディレクトリ
-# images/
