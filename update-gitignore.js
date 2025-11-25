@@ -44,7 +44,7 @@ function updateGitignore() {
 
   // articles/で始まる行を除外してベースを作成
   const filteredLines = lines.filter(line => !line.trim().startsWith('articles/'));
-  const articleCommentIndex = filteredLines.findIndex(line => line.trim() === '# 記事');
+  const articleCommentIndex = filteredLines.findIndex(line => line.trim() === '# 公開していない記事');
   const uniqueUnpublished = Array.from(new Set(unpublishedFiles));
 
   if (articleCommentIndex !== -1) {
