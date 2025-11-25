@@ -3,7 +3,7 @@ title: "毎日更新される膨大な情報を効率良くインプットする
 emoji: "😎"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["GCP", "Slack", "Python", "Gemini", "esa"]
-published: false
+published: True
 publication_name: "transmedia_blog"
 ---
 
