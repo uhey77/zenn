@@ -2,8 +2,8 @@ node_modules
 .DS_Store
 
 # 記事
-articles/esa_summarizer.md
-articles/segmentation.md
 
 # 画像
 images/
+articles/esa_summarizer.md
+articles/segmentation.md
