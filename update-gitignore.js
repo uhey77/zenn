@@ -36,26 +36,40 @@ function updateGitignore() {
   // .gitignoreの行を分割
   const lines = gitignoreContent.split('\n');
   const newLines = [];
-  const existingArticleEntries = new Set();
+  const existingArticleEntries = new Set(
+    lines
+      .map(line => line.trim())
+      .filter(line => line.startsWith('articles/'))
+  );
 
-  // 既存の.gitignoreの内容を保持しつつ、articles/で始まるエントリを記録
-  lines.forEach(line => {
-    const trimmed = line.trim();
-    if (trimmed.startsWith('articles/')) {
-      existingArticleEntries.add(trimmed);
-    } else {
-      // articles/で始まらない行はそのまま保持
-      newLines.push(line);
-    }
-  });
+  // articles/で始まる行を除外してベースを作成
+  const filteredLines = lines.filter(line => !line.trim().startsWith('articles/'));
+  const articleCommentIndex = filteredLines.findIndex(line => line.trim() === '# 記事');
+  const uniqueUnpublished = Array.from(new Set(unpublishedFiles));
 
-  // published: falseのファイルを追加
-  unpublishedFiles.forEach(file => {
-    newLines.push(file);
-    if (!existingArticleEntries.has(file)) {
-      console.log(`追加: ${file}`);
-    }
-  });
+  if (articleCommentIndex !== -1) {
+    // # 記事の直下に未公開記事をまとめて挿入
+    newLines.push(...filteredLines.slice(0, articleCommentIndex + 1));
+
+    uniqueUnpublished.forEach(file => {
+      newLines.push(file);
+      if (!existingArticleEntries.has(file)) {
+        console.log(`追加: ${file}`);
+      }
+    });
+
+    // 以降の行はそのまま維持
+    newLines.push(...filteredLines.slice(articleCommentIndex + 1));
+  } else {
+    // コメントが無い場合は従来どおり末尾に追加
+    newLines.push(...filteredLines);
+    uniqueUnpublished.forEach(file => {
+      newLines.push(file);
+      if (!existingArticleEntries.has(file)) {
+        console.log(`追加: ${file}`);
+      }
+    });
+  }
 
   // published: trueのファイルが.gitignoreに含まれている場合は削除
   publishedFiles.forEach(file => {
@@ -76,4 +90,3 @@ function updateGitignore() {
 }
 
 updateGitignore();
-
