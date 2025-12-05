@@ -91,24 +91,23 @@ def get_gpus():
     ...
 ```
 
-SQLModel は SQLAlchemy と Pydantic を統合したライブラリで、**1 つのクラス定義でDBモデルとAPIスキーマを兼用**できます。
+SQLModel は SQLAlchemy と Pydantic を統合したライブラリで、**1 つのクラス定義で DB モデルと API スキーマを兼用**できます。
 
 #### uv によるパッケージ管理
 
-uv は Rust 製の高速なPythonパッケージマネージャーです。
+uv は Rust 製の高速な Python パッケージマネージャーです。
 
 ```bash
-# 依存関係のインストール（pip の10倍速い）
 uv sync
 # スクリプトの実行
-uv run python main.py
+uv run main.py
 ```
 
 `pyproject.toml` と `uv.lock` で依存関係を管理し、再現性のある環境を構築できます。
 
 #### React + Vite
 
-Vite は次世代のフロントエンドビルドツールで、開発時のHMR（Hot Module Replacement）が非常に高速です。
+Vite は次世代のフロントエンドビルドツールで、開発時の HMR（Hot Module Replacement）が非常に高速です。
 
 ```jsx
 // ReservationForm.jsx
@@ -142,6 +141,18 @@ error: No `pyproject.toml` found in current directory
 Render の Settings で **Root Directory** を `backend` に設定しました。
 
 ![](/images/gpu_reservation/render_root.png)
+
+:::details 詳しい手順
+
+1. Render を開く
+
+2. **Settings** を開く
+
+![](/images/gpu_reservation/root_00.png)
+
+3. **Root Directory** を `backend` に設定する
+
+:::
 
 #### 2. IPv6 接続エラー
 
