@@ -162,21 +162,31 @@ Supabase の **Connection Pooler** (ポート 6543) を使用する接続文字�
 
 :::details 詳しい手順
 
-1. 画面上部にある **Connect** を押す
+1. Supabase を開く
+
+2. 画面上部にある **Connect** を押す
 
 ![](/images/gpu_reservation/ipv6_00.png)
 
-2. 赤い四角の箇所を押す
+3. 赤い四角の箇所を押す
 
 ![](/images/gpu_reservation/ipv6_01.png)
 
-3. **Transaction pooler** を選択する
+4. **Transaction pooler** を選択する
 
 ![](/images/gpu_reservation/ipv6_02.png)
 
-4. 赤い四角の箇所の値をコピーする
+5. 赤い四角の箇所の値をコピーする
 
 ![](/images/gpu_reservation/ipv6_03.png)
+
+6. Render を開く
+
+7. 画面左部にある **Environment** を開く
+
+![](/images/gpu_reservation/ipv6_04.png)
+
+8. 
 
 :::
 
