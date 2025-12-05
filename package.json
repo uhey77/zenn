@@ -19,7 +19,7 @@
     "url": "https://github.com/uhey77/zenn/issues"
   },
   "homepage": "https://github.com/uhey77/zenn#readme",
-  "dependencies": {
+  "devDependencies": {
     "zenn-cli": "^0.2.10"
   }
 }
