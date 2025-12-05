@@ -5,14 +5,16 @@ type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["React", "FastAPI", "Supabase", "CloudflarePages", "Render"]
 published: True
 publication_name: "transmedia_blog"
-published_at: 2025-12-06 21:00
+published_at: 2025-12-07 21:00
 ---
 
 ### はじめに
 
+はじめまして、[TransMedia Tech Lab](https://www.transmedia-tech-lab.jp/) に所属している B4 の山田 祐平です。
+
 研究室で GPU サーバーを複数人で共有していると、こんな問題が起きがちです。
 
-- 「いま誰が GPU 使ってる？」が分からない
+- 「今誰が GPU 使ってる？」が分からない
 - Slackで毎回「今日の 15 時から GPU 使います！」と宣言するのが面倒
 - 予約がかぶって学習ジョブが落ちる悲劇
 
@@ -168,7 +170,7 @@ Supabase の **Connection Pooler** (ポート 6543) を使用する接続文字�
 
 ![](/images/gpu_reservation/ipv6_00.png)
 
-3. 赤い四角の箇所を押す
+3. 赤枠の箇所を押す
 
 ![](/images/gpu_reservation/ipv6_01.png)
 
@@ -176,7 +178,7 @@ Supabase の **Connection Pooler** (ポート 6543) を使用する接続文字�
 
 ![](/images/gpu_reservation/ipv6_02.png)
 
-5. 赤い四角の箇所の値をコピーする
+5. 赤枠の値をコピーする
 
 ![](/images/gpu_reservation/ipv6_03.png)
 
@@ -186,7 +188,11 @@ Supabase の **Connection Pooler** (ポート 6543) を使用する接続文字�
 
 ![](/images/gpu_reservation/ipv6_04.png)
 
-8. 
+8. 赤枠の箇所に 5 でコピーした値を貼り付ける
+
+![](/images/gpu_reservation/ipv6_05.png)
+
+9. Save する
 
 :::
 
