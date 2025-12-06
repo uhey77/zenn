@@ -5,7 +5,7 @@ type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["React", "FastAPI", "Supabase", "CloudflarePages", "Render"]
 published: true
 publication_name: "transmedia_blog"
-published_at: 2025-12-08 21:00
+published_at: 2025-12-07 12:00
 ---
 
 ### はじめに
@@ -33,8 +33,8 @@ published_at: 2025-12-08 21:00
 ![](/images/gpu_reservation/infra.png)
 
 - **フロントエンド (React)**: [Cloudflare Pages](https://www.cloudflare.com/ja-jp/developer-platform/products/pages/) でホスティング（画面の表示）
-- **バックエンド (FastAPI)**: Render.com でホスティング（データの処理）
-- **データベース (PostgreSQL)**: Supabase でホスティング（データの保存）
+- **バックエンド (FastAPI)**: [Render.com](https://render.com/) でホスティング（データの処理）
+- **データベース (PostgreSQL)**: [Supabase](https://supabase.com/) でホスティング（データの保存）
 
 これらすべて、各サービスの無料枠（Free Tier）の範囲内で運用しています。
 
@@ -68,8 +68,9 @@ published_at: 2025-12-08 21:00
 - **無料枠が実用的**: 500MB のストレージは、テキスト主体の予約データなら十分すぎる
 - **接続プーリング対応**: データベースへの接続を使い回して効率化する機能が標準でついており、サーバーレス環境（Render など）からの多数の接続をうまく捌いてくれる
 
-@[card](https://supabase.com/)
 @[card](https://zenn.dev/kibe/articles/7a1dfc9bbd681c)
+@[card](https://zenn.dev/iminux/articles/2b2a2bbab15330)
+@[card](https://zenn.dev/berry_blog/articles/cfce64da076878)
 
 
 ### 使用技術の深掘り
