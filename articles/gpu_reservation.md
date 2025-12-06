@@ -5,7 +5,7 @@ type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["React", "FastAPI", "Supabase", "CloudflarePages", "Render"]
 published: True
 publication_name: "transmedia_blog"
-published_at: 2025-12-07 21:00
+published_at: 2025-12-08 21:00
 ---
 
 ### はじめに
@@ -237,6 +237,20 @@ Render ダッシュボードの Settings から Start Command を直接編集し
 ```bash
 uv run python -m app.seed && uv run main.py
 ```
+
+:::details 詳しい手順
+
+1. Render を開く
+
+2. **Settings** を開く
+
+![](/images/gpu_reservation/root_00.png)
+
+3. **Build & Deploy** セクションにある **Start Command** を以下のようにする
+
+![](/images/gpu_reservation/render_yaml.png)
+
+:::
 
 #### 5. 無料プランのスリープ問題
 
